@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Contato } from './contato';
 import { ContatoService } from '../contato.service';
 
+import {FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-contato',
   templateUrl: './contato.component.html',
@@ -9,20 +11,57 @@ import { ContatoService } from '../contato.service';
 })
 export class ContatoComponent implements OnInit {
 
+  formulario: FormGroup;
+  contatos: Contato[] = [];
+  colunas = ['id', 'nome', 'email', 'favorito']
+
   constructor(
-    private service: ContatoService
+    private service: ContatoService,
+    private fb: FormBuilder
   ) { }
 
-  ngOnInit(): void {
-    const c : Contato = new Contato();
-    c.nome = 'Ryan'
-    c.email = "ryan@gmail.com"
-    c.favorito = true
+  ngOnInit(): void { 
+    this.montarFormulario();
+    this.listarContatos();
+  }
 
-    this.service.save(c).subscribe( resposta => {
-      console.log(resposta);
+  montarFormulario() {
+    this.formulario = this.fb.group({
+      nome: ['', Validators.required],
+      email: ['',[Validators.required, Validators.email ]]
     })
+  }
 
+  listarContatos() {
+    this.service.list().subscribe(response => {
+      this.contatos = response
+    })
+  }
+
+  favoritar(contato: Contato) {
+    this.service.favorite(contato).subscribe(response => {
+      contato.favorito = !contato.favorito;
+    })
+  }
+
+  submit() {
+    const isInvalid = this.formulario.valid;
+    
+    const formValues = this.formulario.value;
+    const contato: Contato = new Contato(formValues.nome, formValues.email);
+    this.service.save(contato).subscribe( resposta => {
+     let lista: Contato[] = [...this.contatos, resposta]
+     this.contatos = lista;
+     alert("Contato adicionado com sucesso!!!")
+     this.clearForm() 
+    })
+  }
+
+  clearForm() {
+    this.formulario.reset({
+      nome: '',
+      email: ''
+    })
   }
 
 }
