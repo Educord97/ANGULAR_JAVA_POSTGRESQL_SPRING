@@ -28,7 +28,4 @@ export class ContatoService {
   favorite(contato: Contato) : Observable<any> {
     return this.http.patch( `${this.url}/${contato.id}/favorito`, null);
   }
-  
-
-
 }
