@@ -48,7 +48,6 @@ export class ContatoComponent implements OnInit {
 
   submit() {
     const isInvalid = this.formulario.valid;
-    
     const formValues = this.formulario.value;
     const contato: Contato = new Contato(formValues.nome, formValues.email);
     this.service.save(contato).subscribe( resposta => {

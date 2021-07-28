@@ -51,7 +51,7 @@
         </ng-template>
         <mat-card class="half-width">
             <mat-card-title>Novo Contato</mat-card-title>
-            <form [formGroup]="formulario" (ngSubmit)="submit()">
+            <form [formGroup]="formulario" >
                 <mat-form-field class="full-width">
                     <mat-label>Nome: </mat-label>
                     <input formControlName="nome" matInput placeholder="Digite seu nome">
@@ -61,7 +61,12 @@
                     <mat-label>Email: </mat-label>
                     <input formControlName="email" matInput placeholder="Digite seu email">
                 </mat-form-field>
-                <button [disabled]="!formulario.valid" mat-raised-button >Adicionar</button>
+                <button
+                mwlConfirmationPopover
+                [popoverTitle]="'Deseja adicionar um novo contato?'"
+                placement="right"
+                (confirm)="submit()"              
+                 [disabled]="!formulario.valid" mat-raised-button >Adicionar</button>
 
             </form>
         </mat-card>

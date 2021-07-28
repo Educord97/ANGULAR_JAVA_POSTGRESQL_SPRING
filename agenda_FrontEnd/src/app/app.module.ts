@@ -20,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContatoComponent } from './contato/contato.component';
 
 import { ToastrModule } from 'ngx-toastr';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { ToastrModule } from 'ngx-toastr';
       timeOut: 5000,
       closeButton: true
     }),
-
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'warning', // set defaults here
+    }),
   ],
   providers: [
     ContatoService
