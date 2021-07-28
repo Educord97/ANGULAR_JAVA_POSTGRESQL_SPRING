@@ -19,6 +19,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContatoComponent } from './contato/contato.component';
 
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,14 @@ import { ContatoComponent } from './contato/contato.component';
     MatTabsModule,
     MatTableModule,
     MatIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      progressBar: true,
+      positionClass: 'toast-top-right',
+      timeOut: 5000,
+      closeButton: true
+    }),
+
   ],
   providers: [
     ContatoService

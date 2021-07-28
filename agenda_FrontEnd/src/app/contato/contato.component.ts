@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Contato } from './contato';
 import { ContatoService } from '../contato.service';
+import { ToastrService } from 'ngx-toastr';
 
 import {FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -17,7 +18,8 @@ export class ContatoComponent implements OnInit {
 
   constructor(
     private service: ContatoService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void { 
@@ -52,9 +54,13 @@ export class ContatoComponent implements OnInit {
     this.service.save(contato).subscribe( resposta => {
      let lista: Contato[] = [...this.contatos, resposta]
      this.contatos = lista;
-     alert("Contato adicionado com sucesso!!!")
+     this.showSuccess();
      this.clearForm() 
     })
+  }
+
+  showSuccess() {
+    this.toastr.success('Adicionado!', 'Contato adicionado com sucesso!');
   }
 
   clearForm() {
