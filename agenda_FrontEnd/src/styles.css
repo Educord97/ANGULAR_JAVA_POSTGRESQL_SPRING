@@ -5,3 +5,19 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*Popover*/
+/*Container Popover*/
+.popover,right,popover-right,bs {
+  width: 180px !important;
+}
+.popover-title{
+  text-align: center !important;
+  font-size: 14px !important;
+}
+.popover-body {
+  padding-top: 0 !important;
+}
+.confirm-btn-container {
+  padding: 0 !important;
+}

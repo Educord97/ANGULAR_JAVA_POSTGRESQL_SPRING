@@ -17,7 +17,7 @@ export class ContatoService {
     private http: HttpClient
   ) { }
 
-  save(contato: Contato) : Observable<Contato> {
+  save(contato: Contato): Observable<Contato> {
     return this.http.post<Contato>(this.url, contato);
   }
 
@@ -25,7 +25,12 @@ export class ContatoService {
     return this.http.get<any>(this.url);
   }
 
-  favorite(contato: Contato) : Observable<any> {
+  favorite(contato: Contato): Observable<any> {
     return this.http.patch( `${this.url}/${contato.id}/favorito`, null);
+  }
+
+  // tslint:disable-next-line:typedef
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.url}/${id}`, {responseType: 'text'});
   }
 }

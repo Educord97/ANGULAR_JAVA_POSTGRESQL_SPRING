@@ -32,12 +32,23 @@
 
                         <a href="#" (click)="favoritar(contato)">
                             <mat-icon>
-                                {{ contato.favorito ? 'favorite' : 'favorite_border' }}
+                                {{ contato.favorito ? 'star_rate' : 'favorite_border' }}
                             </mat-icon>
                         </a>
                     </td>
-
                 </ng-container>
+
+              <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef> Deletar </th>
+                <td mat-cell *matCellDef="let contato"> {{ contato.delete}}
+
+                  <a href="#" (click)="delete(contato.id)">
+                    <mat-icon style="color: coral">
+                      delete
+                    </mat-icon>
+                  </a>
+                </td>
+              </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="colunas"></tr>
                 <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
@@ -65,9 +76,8 @@
                 mwlConfirmationPopover
                 [popoverTitle]="'Deseja adicionar um novo contato?'"
                 placement="right"
-                (confirm)="submit()"              
-                 [disabled]="!formulario.valid" mat-raised-button >Adicionar</button>
-
+                (confirm)="submit()"
+                [disabled]="!formulario.valid" mat-raised-button >Adicionar</button>
             </form>
         </mat-card>
     </mat-tab>

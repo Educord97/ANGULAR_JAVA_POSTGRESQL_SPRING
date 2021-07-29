@@ -14,7 +14,7 @@ export class ContatoComponent implements OnInit {
 
   formulario: FormGroup;
   contatos: Contato[] = [];
-  colunas = ['id', 'nome', 'email', 'favorito']
+  colunas = ['id', 'nome', 'email', 'favorito', 'delete']
 
   constructor(
     private service: ContatoService,
@@ -22,7 +22,7 @@ export class ContatoComponent implements OnInit {
     private toastr: ToastrService
   ) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.montarFormulario();
     this.listarContatos();
   }
@@ -46,6 +46,14 @@ export class ContatoComponent implements OnInit {
     })
   }
 
+  delete(id: number) {
+    this.service.delete(id).subscribe(
+      data => {
+        console.log('deleted response', data);
+      }
+    )
+  }
+
   submit() {
     const isInvalid = this.formulario.valid;
     const formValues = this.formulario.value;
@@ -54,7 +62,7 @@ export class ContatoComponent implements OnInit {
      let lista: Contato[] = [...this.contatos, resposta]
      this.contatos = lista;
      this.showSuccess();
-     this.clearForm() 
+     this.clearForm()
     })
   }
 
