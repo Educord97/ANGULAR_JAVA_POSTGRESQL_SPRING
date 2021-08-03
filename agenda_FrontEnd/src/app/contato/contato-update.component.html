@@ -1,1 +1,21 @@
-<p>contato-update works!</p>
+<mat-card class="half-width">
+    <mat-card-title>Novo Contato</mat-card-title>
+    <form [formGroup]="formulario" >
+        <mat-form-field class="full-width">
+            <mat-label>Nome: </mat-label>
+            <input formControlName="nome" matInput placeholder="Digite seu nome">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Email: </mat-label>
+            <input formControlName="email" matInput placeholder="Digite seu email">
+        </mat-form-field>
+        <button
+        mwlConfirmationPopover
+        [popoverTitle]="'Deseja adicionar um novo contato?'"
+        placement="right"
+        (confirm)="submit()"
+        [disabled]="!formulario.valid" mat-raised-button >Adicionar</button>
+    </form>
+</mat-card>
+<button type="button" (click)="previous()" class="btn btn-outline-primary">Voltar</button>

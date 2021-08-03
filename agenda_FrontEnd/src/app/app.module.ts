@@ -21,12 +21,15 @@ import { ContatoComponent } from './contato/contato.component';
 
 import { ToastrModule } from 'ngx-toastr';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { ContatoUpdateComponent } from './contato/contato-update.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContatoComponent
+    ContatoComponent,
+    ContatoUpdateComponent
+    
   ],
   imports: [
     BrowserModule,

@@ -2,14 +2,29 @@
     <mat-icon class="text-light" style="padding-right: 30px;">account_circle</mat-icon>
     <h3 class="text-light">Contatos</h3>
 </mat-toolbar>
-<mat-tab-group>
-    <mat-tab>
-        <ng-template mat-tab-label>
-            <mat-icon>list</mat-icon>
-            Todos
-        </ng-template>
 
-        <mat-card>
+
+<div class="card"> 
+    <div class="card-header pb-0y">
+        <div class="row">
+            <div class="col-6">
+                <h4>Todos os contatos</h4>
+            </div>
+            <div class="col-6">
+                <div class="float-right">
+                    <button
+                        class="btn btn-icon waves-effect waves-light btn-xs btn-outline-primary"
+                        routerLink="/edit">
+                      <!--  <fa-icon icon="plus"></fa-icon> -->
+                        <span>
+                            Novo
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
             <table mat-table [dataSource]="contatos" class="full-width">
                 <ng-container matColumnDef="id">
                     <th mat-header-cell *matHeaderCellDef> ID </th>
@@ -54,7 +69,7 @@
                 <th mat-header-cell *matHeaderCellDef> Editar </th>
                 <td style="width: 60px; padding-left: 10px" mat-cell *matCellDef="let contato"> 
 
-                  <a routerLink="/edit" >
+                  <a href="#" >
                     <mat-icon style="color: rgb(25, 93, 138)">
                       create
                     </mat-icon>
@@ -65,32 +80,3 @@
                 <tr mat-header-row *matHeaderRowDef="colunas"></tr>
                 <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
             </table>
-        </mat-card>
-    </mat-tab>
-    <mat-tab>
-        <ng-template mat-tab-label>
-            <mat-icon>add</mat-icon>
-            Novo
-        </ng-template>
-        <mat-card class="half-width">
-            <mat-card-title>Novo Contato</mat-card-title>
-            <form [formGroup]="formulario" >
-                <mat-form-field class="full-width">
-                    <mat-label>Nome: </mat-label>
-                    <input formControlName="nome" matInput placeholder="Digite seu nome">
-                </mat-form-field>
-
-                <mat-form-field class="full-width">
-                    <mat-label>Email: </mat-label>
-                    <input formControlName="email" matInput placeholder="Digite seu email">
-                </mat-form-field>
-                <button
-                mwlConfirmationPopover
-                [popoverTitle]="'Deseja adicionar um novo contato?'"
-                placement="right"
-                (confirm)="submit()"
-                [disabled]="!formulario.valid" mat-raised-button >Adicionar</button>
-            </form>
-        </mat-card>
-    </mat-tab>
-</mat-tab-group>
