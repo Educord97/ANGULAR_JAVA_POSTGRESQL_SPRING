@@ -14,7 +14,7 @@ export class ContatoComponent implements OnInit {
 
   formulario: FormGroup;
   contatos: Contato[] = [];
-  colunas = ['id', 'nome', 'email', 'favorito', 'delete']
+  colunas = ['id', 'nome', 'email', 'favorito', 'delete', 'edit']
 
   constructor(
     private service: ContatoService,
@@ -50,6 +50,7 @@ export class ContatoComponent implements OnInit {
     this.service.delete(id).subscribe(
       data => {
         console.log('deleted response', data);
+        this.listarContatos()
       }
     )
   }
