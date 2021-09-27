@@ -12,6 +12,8 @@ import {FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ContatoComponent implements OnInit {
 
+  search?: string;
+
   formulario: FormGroup;
   contatos: Contato[] = [];
   colunas = ['id', 'nome', 'email', 'favorito', 'delete', 'edit']
@@ -30,7 +32,8 @@ export class ContatoComponent implements OnInit {
   montarFormulario() {
     this.formulario = this.fb.group({
       nome: ['', Validators.required],
-      email: ['',[Validators.required, Validators.email ]]
+      email: ['',[Validators.required, Validators.email ]],
+      search: this.search || ''
     })
   }
 
