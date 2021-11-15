@@ -1,7 +1,10 @@
 # ANGULAR_JAVA_POSTGRESQL_SPRINGBOOT
 
-<<<<<<< HEAD
+### Front-End with Angular TypeScript
 ![readme capa](./agenda_FrontEnd/src/assets/capa.png)
-=======
-![readme capa](/agenda_frontEnd/src/assets/capa.png)
->>>>>>> ccb8e8eafd7d56cc1bfc10ce1fbef5fc97d37995
+
+### Back-End with Java and Spring
+![readme capa](./agenda_FrontEnd/src/assets/spring_back.png)
+
+### DataBase with PostgreSQL
+![readme capa](./agenda_FrontEnd/src/assets/pstg.png)
