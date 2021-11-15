@@ -1,4 +1,4 @@
-# ANGULAR_JAVA_POSTGRESQL_SPRINGBOOT
+# ANGULAR_JAVA_POSTGRESQL_SPRING
 
 ### Front-End with Angular TypeScript
 ![readme capa](./agenda_FrontEnd/src/assets/capa.png)
