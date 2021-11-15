@@ -10,8 +10,9 @@
         <module name="agenda" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="11">
-      <module name="agenda" target="11" />
+    <bytecodeTargetLevel target="8">
+      <module name="agenda" target="8" />
+      <module name="ANGULAR_JAVA_POSTGRESQL_SPRINGBOOT" target="10" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
